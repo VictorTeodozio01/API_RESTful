@@ -5,7 +5,9 @@
 Node.js<br>
 TypeScript <br>
 NestJS<br>
-
+PostgreSQL<br>
+PostGIS<br>
+Docker<br>
 
 ## Descrição
 API RESTful com as funcionalidades CRUD.
@@ -13,11 +15,14 @@ API RESTful com as funcionalidades CRUD.
 
 ## Como executar 
 
+#### Altere as credenciais de conexão com o banco de dados no seguinte arquivo: .env
+
+
 ```bash
-# instale o node modules
+# instale os pacotes com o seguinte comando:
 $ npm install
 
-# apos a instalação execute o comando
+# apos a instalação execute o comando:
 $ npm run start
 
 ```
@@ -104,14 +109,11 @@ DELETE /pontos-de-interesse/id — Excluir um ponto de interesse.<br>
 
 ## Docker
 
-para testar o docker execute o seguinte comando:
+para testar no docker, execute o seguinte comando:
 
 
 ```bash
-# instale o node modules
-$ docker-compose down --volumes
 
-# apos a instalação execute o comando
 $ docker-compose up --build
 
 ```

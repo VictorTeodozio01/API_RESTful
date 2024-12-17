@@ -7,22 +7,14 @@ import { CategoriasModule } from './modules/categorias/categorias.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseSeederService } from './database/seeds/database-seeder.service';
+import { DatabaseConfig } from './config/database.config';
 
 @Module({
   controllers: [AppController],
   providers: [AppService,DatabaseSeederService],
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRoot({
-      type:'postgres',
-      host:'localhost',
-      port: 5432,
-      username:'postgres',
-      password:'123',
-      database:'geodb',
-      autoLoadEntities: true,
-      synchronize: true, 
-    }),
+    TypeOrmModule.forRoot(DatabaseConfig),
     UsuarioModule,
     PontosDeInteresseModule,
     CategoriasModule,

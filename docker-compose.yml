@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   postgres:
-    image: postgres:15
+    image: postgis/postgis:latest # Altere para a imagem PostGIS
     container_name: postgres
     restart: always
     environment:
@@ -12,8 +12,9 @@ services:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      -  ./src/database/seeds/dados-semente.sql:/docker-entrypoint-initdb.d/dados-semente.sql
-
+      - ./src/database/seeds/dados-semente.sql:/docker-entrypoint-initdb.d/dados-semente.sql  # Se você tiver um script de inicialização
+      - ./init_postgis.sh:/docker-entrypoint-initdb.d/init_postgis.sh  # Script de inicialização para ativar o PostGIS (opcional)
+    
   nest_app:
     build:
       context: .
