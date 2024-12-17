@@ -1,13 +1,14 @@
 # API RESTful 
 
 
-## Tecnologias Utilizadas
+## Recursos Utilizados
 Node.js<br>
 TypeScript <br>
 NestJS<br>
 PostgreSQL<br>
 PostGIS<br>
 Docker<br>
+Jest
 
 ## Descrição
 API RESTful com as funcionalidades CRUD.
@@ -15,17 +16,36 @@ API RESTful com as funcionalidades CRUD.
 
 ## Como executar 
 
-#### Altere as credenciais de conexão com o banco de dados no seguinte arquivo: .env
+### Altere as credenciais de conexão com o banco de dados no seguinte arquivo: .env
 
 
 ```bash
+
+
 # instale os pacotes com o seguinte comando:
 $ npm install
 
-# apos a instalação execute o comando:
+# inicie o seguinte comando para criar o arquivo .env com as credenciais de conexão com o banco:
+$ "DB_HOST=localhost`nDB_PORT=5432`nDB_USERNAME=usuario`nDB_PASSWORD=senha`nDB_NAME=nome_do_banco" | Out-File -FilePath .env -Encoding utf8
+
+# apos a instalação e configuração, execute o comando:
 $ npm run start
 
 ```
+
+### Obs: caso o arquivo .env não seja criado, crie-o manualmente e preencha as credenciais:
+
+DB_HOST=localhost<br>
+DB_PORT=5432<br>
+DB_USERNAME=usuario<br>
+DB_PASSWORD=senha<br>
+DB_NAME=nome_do_banco<br>
+
+### exemplo:
+<img src="exemplo.env.png" alt="Texto alternativo" width="500">
+
+
+
 
 ## Rotas
 ### As rotas abaixo podem ser executadas no Postman
@@ -117,3 +137,13 @@ para testar no docker, execute o seguinte comando:
 $ docker-compose up --build
 
 ```
+
+## Testes utilizando Jest
+
+```bash
+# Para executar os testes, primeiro será necessário inicializar utilizando o seguinte comando:
+$ npm run start
+
+# Isso criará automaticamente o banco de dados, as tabelas e alguns dados. Após verificar que tudo foi criado corretamente, execute o seguinte comando para iniciar os testes:
+
+$ npm run test:e2e
